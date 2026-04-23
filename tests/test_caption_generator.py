@@ -32,7 +32,6 @@ class CaptionGeneratorTests(unittest.TestCase):
         self.assertIn("Quick update on content planning", caption)
         self.assertTrue(caption.endswith("Save and share if this helped!"))
 
-
     def test_generates_facebook_balanced_post_caption(self):
         caption = generate_caption(
             CaptionRequest(
@@ -82,7 +81,5 @@ class CaptionGeneratorTests(unittest.TestCase):
                     topic="growth",
                 )
             )
-
-
 if __name__ == "__main__":
     unittest.main()
