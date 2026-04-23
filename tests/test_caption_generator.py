@@ -81,5 +81,7 @@ class CaptionGeneratorTests(unittest.TestCase):
                     topic="growth",
                 )
             )
+
+
 if __name__ == "__main__":
     unittest.main()
