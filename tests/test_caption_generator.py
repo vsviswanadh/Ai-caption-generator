@@ -32,6 +32,20 @@ class CaptionGeneratorTests(unittest.TestCase):
         self.assertIn("Quick update on content planning", caption)
         self.assertTrue(caption.endswith("Save and share if this helped!"))
 
+    def test_normalizes_case_and_whitespace_in_inputs(self):
+        caption = generate_caption(
+            CaptionRequest(
+                platform="  LinkedIn ",
+                content_type=" Post ",
+                professionalism=" Professional ",
+                topic="AI governance",
+            )
+        )
+
+        self.assertIn("New post", caption)
+        self.assertIn("A thoughtful perspective on AI governance", caption)
+        self.assertTrue(caption.endswith("What has your experience been?"))
+
     def test_generates_facebook_balanced_post_caption(self):
         caption = generate_caption(
             CaptionRequest(

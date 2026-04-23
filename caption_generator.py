@@ -29,11 +29,18 @@ def _validate(request: CaptionRequest) -> CaptionRequest:
     topic = request.topic.strip()
 
     if platform not in _ALLOWED_PLATFORMS:
-        raise ValueError(f"Unsupported platform: {request.platform}")
+        raise ValueError(
+            f"Unsupported platform: {platform}. Allowed values: {sorted(_ALLOWED_PLATFORMS)}"
+        )
     if content_type not in _ALLOWED_CONTENT_TYPES:
-        raise ValueError(f"Unsupported content type: {request.content_type}")
+        raise ValueError(
+            f"Unsupported content type: {content_type}. Allowed values: {sorted(_ALLOWED_CONTENT_TYPES)}"
+        )
     if professionalism not in _ALLOWED_PROFESSIONALISM:
-        raise ValueError(f"Unsupported professionalism level: {request.professionalism}")
+        raise ValueError(
+            "Unsupported professionalism level: "
+            f"{professionalism}. Allowed values: {sorted(_ALLOWED_PROFESSIONALISM)}"
+        )
     if not topic:
         raise ValueError("Topic cannot be empty")
 

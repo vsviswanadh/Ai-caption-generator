@@ -24,7 +24,10 @@ def main() -> None:
         professionalism=args.professionalism,
         topic=args.topic,
     )
-    print(generate_caption(request))
+    try:
+        print(generate_caption(request))
+    except ValueError as exc:
+        raise SystemExit(f"Error: {exc}") from exc
 
 
 if __name__ == "__main__":
